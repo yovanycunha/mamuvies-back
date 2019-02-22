@@ -1,0 +1,17 @@
+{
+  "name": "mamuvies-back",
+  "version": "1.0.0",
+  "description": "Um backend pra servir de apoio aos estudos de diversos frameworks de frontend",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yovany Cunha",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "http-status-codes": "^1.3.0",
+    "mongoose": "^5.4.14"
+  }
+}

@@ -13,8 +13,8 @@ const movieService = ( () => {
         }
     }
 
-    const _getAllMovies = async function (callback) {
-        Movie.find({}, function (err, movies) {
+    const _getAllMovies = async  (callback) => {
+        Movie.find({},  (err, movies) => {
             if (err) {
                 callback(
                     response.notFound('Não foi possível recuperar filmes.')
@@ -25,27 +25,25 @@ const movieService = ( () => {
         });
     };
 
-    const _removeMovie = async function (movieId, callback) {
+    const _removeMovie = async  (movieId, callback) => {
         try {
-            const movie = await Movie.findOneAndRemove(
-                mongoose.Types.ObjectId(movieId)
-            );
+            await Movie.findByIdAndRemove(movieId, (err, movie) => {
+                if(!movie) {
+                    return callback(
+                        response.notFound('Não foi possível encontrar filme')
+                    );
+                }
 
-            if (!movie) {
                 return callback(
-                    response.notFound('Não foi possível encontrar filme')
+                    response.ok('Filme removido com sucesso', movie)
                 );
-            }
-
-            return callback(
-                response.ok('Usuário removido.')
-            );
+            })
         } catch (err) {
-            response.notFound('Remoção do usuário mal sucedida');
+            callback(response.notFound('Remoção do filme mal sucedida'));
         }
     };
 
-    const _updateMovie = async function (movieId,updatedInfo, callback) {
+    const _updateMovie = async (movieId,updatedInfo, callback) => {
         try {
             await Movie.findByIdAndUpdate(movieId, updatedInfo, function (err, movie) {
                 if (err) {

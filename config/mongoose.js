@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 
 module.exports = function () {
-    //TODO: Criar e conectar BD
     mongoose.connect('mongodb://localhost:27017/mamuvies-db', { useNewUrlParser: true });
     mongoose.Promise = global.Promise;
 

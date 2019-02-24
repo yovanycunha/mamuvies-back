@@ -6,7 +6,13 @@ const MovieSchema = new mongoose.Schema({
         type : String,
         required: true,
     },
+    
+    /*
+    Os atributos abaixo foram comentados para melhor testar a aplicação
+    TODO:Descomentar os atributos quando a implementação do middleware estiver pronta
+    */
 
+/* 
     year: {
         type : String,
         required: true,
@@ -25,7 +31,7 @@ const MovieSchema = new mongoose.Schema({
     imdbID: {
         type: String,
         required: true,
-    },
+    }, */
 
 });
 

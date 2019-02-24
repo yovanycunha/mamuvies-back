@@ -16,21 +16,19 @@ const userService = (function () {
 
     const _removeUser = async function (userId, callback) {
         try {
-            const user = await User.findOneAndRemove(
-                mongoose.Types.ObjectId(userId)
-            );
+            await User.findByIdAndRemove(userId, (err, user) => {
+                if(!user) {
+                    return callback(
+                        response.notFound('Não foi possível encontrar usuário')
+                    );
+                }
 
-            if (!user) {
                 return callback(
-                    response.notFound('Não foi possível encontrar usuário')
+                    response.ok('Usuário removido com sucesso', user)
                 );
-            }
-
-            return callback(
-                response.ok('Usuário removido.')
-            );
+            })
         } catch (err) {
-            response.notFound('Remoção do usuário mal sucedida');
+            callback(response.notFound('Remoção do usuário mal sucedida'));
         }
     };
 

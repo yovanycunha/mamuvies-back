@@ -8,15 +8,18 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
 
-    isMainDirector : {
-        type: Boolean,
+    email : {
+        type: String,
+        default: '',
         required: false,
     },
 
-    role : {
-        type: String,
-        required: true,
-    },
+    watchLists: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            require: false,
+        }
+    ],
 
 });
 

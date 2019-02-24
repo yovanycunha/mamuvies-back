@@ -15,4 +15,16 @@ router.get('/', (req, res) => {
     });
 });
 
+router.delete('/:movieId', (req, res) => {
+    movieService.removeMovie(req.params.movieId, (response) => {
+        res.status(response.status).send(response);
+    });
+});
+
+router.put('/:movieId', (req, res) => {
+    movieService.updateMovie(req.params.movieId,req.body, (response) => {
+        res.status(response.status).send(response);
+    });
+});
+
 module.exports = router;

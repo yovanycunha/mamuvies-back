@@ -8,5 +8,25 @@ router.get('/', (req, res)=> {
     });
 });
 
+router.post('/', (req, res)=> {
+    watchlistService.saveWatchlist(req.body, (response) => {
+        res.status(response.status).send(response)
+    });
+});
+
+
+router.delete('/:watchlistId', (req, res) => {
+    watchlistService.removeWatchlist(req.params.watchlistId, (response) => {
+        res.status(response.status).send(response);
+    });
+});
+
+
+router.put('/:watchlistId', (req, res) => {
+    watchlistService.updateWatchlist(req.params.watchlistId,req.body, (response) => {
+        res.status(response.status).send(response);
+    });
+});
+
 
 module.exports = router;

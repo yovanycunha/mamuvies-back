@@ -7,3 +7,4 @@ module.exports = (app) => {
     app.use("/api/movies", movieController);
     app.use("/api/watchlists", watchlistController);
 };
+

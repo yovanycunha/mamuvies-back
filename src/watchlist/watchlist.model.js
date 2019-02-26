@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const WatchlistSchema = new mongoose.Schema({
 
+    name : {
+        type: String,
+        default:"",
+        required: false,
+    },
+
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",

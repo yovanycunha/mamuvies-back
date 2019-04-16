@@ -17,6 +17,7 @@ const UserSchema = new mongoose.Schema({
     watchLists: [
         {
             type: mongoose.Schema.Types.ObjectId,
+            ref: "Movie",
             require: false,
         }
     ],

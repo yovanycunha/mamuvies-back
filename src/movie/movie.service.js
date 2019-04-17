@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const response = require('../../util/responses');
 const Movie = require('./movie.model');
 const request = require('request');
@@ -17,7 +16,8 @@ const movieService = ( () => {
     const _apiTest = async (callback) => {
         request('http://www.omdbapi.com/?s=game&apikey=ebcafd7d', (error, response, body) => {
             if (!error && response.statusCode == 200)  {
-                return console.log(body);
+                return console.log(response.body);
+                
             }
 
         });
@@ -25,6 +25,7 @@ const movieService = ( () => {
 
     const _getAllMovies = async  (callback) => {
         test = _apiTest();
+        
         Movie.find({},  (err, movies) => {
             if (err) {
                 callback(

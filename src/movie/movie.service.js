@@ -1,6 +1,7 @@
 const response = require('../../util/responses');
 const Movie = require('./movie.model');
 const request = require('request');
+const fetch = require('node-fetch');
 
 const movieService = ( () => {
     const _saveMovie = async (movie, callback) => {
@@ -13,18 +14,26 @@ const movieService = ( () => {
         }
     }
 
-    const _apiTest = async (callback) => {
-        request('http://www.omdbapi.com/?s=game&apikey=ebcafd7d', (error, response, body) => {
-            if (!error && response.statusCode == 200)  {
-                return console.log(response.body);
-                
-            }
 
-        });
+    const _apiTest = async (callback) => {
+        /* request('http://www.omdbapi.com/?s=game&apikey=ebcafd7d', (error, response, body) => {
+            if (!error && response.statusCode == 200)  {
+                return console.log(JSON.parse(response.body));
+            }
+        }); */
+        return fetch('http://www.omdbapi.com/?s=game&apikey=ebcafd7d')
+        .then(data=>{return data.json()})
+        .then(res=>{
+            // console.log(res);
+            return res
+        })
+        .catch(err=>{console.log(err)});
+       
     }
+    
 
     const _getAllMovies = async  (callback) => {
-        test = _apiTest();
+        _apiTest().then(response => console.log(response));
         
         Movie.find({},  (err, movies) => {
             if (err) {

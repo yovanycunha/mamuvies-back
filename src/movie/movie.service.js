@@ -1,6 +1,5 @@
 const response = require('../../util/responses');
 const Movie = require('./movie.model');
-const api = require('./../apiwrapper/wrapper');
 
 const movieService = ( () => {
     const _saveMovie = async (movie, callback) => {
@@ -12,8 +11,6 @@ const movieService = ( () => {
             return callback(response.badRequest(err.message));
         }
     }
-
-   
 
     const _getAllMovies = async  (callback) => {        
         Movie.find({},  (err, movies) => {
@@ -62,14 +59,11 @@ const movieService = ( () => {
         }
     }
 
-    
-    
-
     return {
-        saveMovie: _saveMovie,
-        getAllMovies: _getAllMovies,
-        removeMovie: _removeMovie,
-        updateMovie: _updateMovie,
+        saveMovie:      _saveMovie,
+        getAllMovies:   _getAllMovies,
+        removeMovie:    _removeMovie,
+        updateMovie:    _updateMovie,
     }
 }
 

@@ -12,7 +12,7 @@ const movieService = ( () => {
         }
     }
 
-    const _getAllMovies = async  (callback) => {        
+    const _getAllMovies = async  (callback) => {
         Movie.find({},  (err, movies) => {
             if (err) {
                 callback(

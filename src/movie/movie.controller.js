@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const movieService = require('./movie.service');
+const wrapper = require('../apiMiddleware/apiRequests');
+
 
 router.post('/', (req, res)=> {
     movieService.saveMovie(req.body, (response) => {
@@ -11,6 +13,8 @@ router.post('/', (req, res)=> {
 
 router.get('/', (req, res) => {
     movieService.getAllMovies((response) => {
+        console.log(res);
+        
         res.status(response.status).send(response);
     });
 });

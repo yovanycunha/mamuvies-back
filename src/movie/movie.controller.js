@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const movieService = require('./movie.service');
-const wrapper = require('../apiMiddleware/apiRequests');
 
 
 router.post('/', (req, res)=> {

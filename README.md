@@ -1,10 +1,7 @@
 # Mamuvies
 
 Fiz esse backend com o propósito de ter uma base para estudar frameworks de frontend  
-![express version](https://img.shields.io/npm/l/express.svg?style=social)
-![Twitter](https://img.shields.io/twitter/url/https/YovanyCunha.svg?style=social)
-![Github](https://img.shields.io/github/followers/yovanycunha.svg?style=social)
-![node](https://img.shields.io/node/v/mongoose.svg?style=social)
+
 
 ## Pré-requisitos
 
